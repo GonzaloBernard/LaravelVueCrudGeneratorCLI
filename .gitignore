@@ -3,3 +3,4 @@
 /app/Http/Resources/*
 /app/Models/*
 /database/migrations/*
+/store/cruds/*

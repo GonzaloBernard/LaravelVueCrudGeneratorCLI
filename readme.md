@@ -23,4 +23,7 @@ User height
     php .\vendor\generate\code_generator.php User user a a height
 
 
+After that, run migrations!
+
+
 by GonzaloBernard

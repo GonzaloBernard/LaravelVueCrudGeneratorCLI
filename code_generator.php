@@ -2,11 +2,11 @@
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 
-$env = 'production';
-//$env = 'development';
+//$env = 'production';
+$env = 'development';
 
-$prefix = 'vendor/generate/'; // Inside vendor folder
-//$prefix = ''; // Root folder
+//$prefix = 'vendor/generate/'; // Inside vendor folder
+$prefix = ''; // Root folder
 
 /* $output_model_prefix = $output_controller_prefix = $output_store_request_prefix = 
         $output_update_request_prefix = $output_resource_prefix = $output_migration_prefix = 'vendor/generate/dist/'; */

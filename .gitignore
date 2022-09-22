@@ -2,5 +2,4 @@
 /app/Http/Requests/*
 /app/Http/Resources/*
 /app/Models/*
-/app/database/migrations/*
-/app/routes/*
+/database/migrations/*

@@ -4,3 +4,4 @@
 /app/Models/*
 /database/migrations/*
 /store/cruds/*
+/cruds/*

@@ -8,12 +8,12 @@
                         </div>
                         <h4 class="card-title">
                             {{ $t('global.table') }}
-                            <strong>Entidad</strong>
+                            <strong>entity_name</strong>
                         </h4>
                     </div>
 
                     <div class="card-body">
-                        <router-link class="btn btn-primary" :to="{ name: 'entidad.create' }">
+                        <router-link class="btn btn-primary" :to="{ name: 'name_camelcase.create' }">
                             <i class="material-icons">
                                 add
                             </i>
@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Tabla de Entidad</h1>
+                                <h1>Tabla de entity_name</h1>
                             </div>
                         </div>
                     </div>
@@ -51,10 +51,10 @@ export default {
     this.fetchIndexData()
   },
   computed: {
-    ...mapGetters('EntidadIndex', ['data', 'total', 'loading'])
+    ...mapGetters('entity_nameIndex', ['data', 'total', 'loading'])
   },
   methods: {
-    ...mapActions('EntidadIndex', ['fetchIndexData', 'resetState'])
+    ...mapActions('entity_nameIndex', ['fetchIndexData', 'resetState'])
   }
 }
 </script>

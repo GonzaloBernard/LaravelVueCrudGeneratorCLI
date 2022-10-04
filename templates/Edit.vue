@@ -10,7 +10,7 @@
                 </div>
                 <h4 class="card-title">
                   {{ $t('global.edit') }}
-                  <strong>Editar Entidad</strong>
+                  <strong>Editar entity_name</strong>
                 </h4>
               </div>
               <div class="card-body">
@@ -52,7 +52,7 @@
       }
     },
     computed: {
-      ...mapGetters('EntidadSingle', ['entry', 'loading', 'lists'])
+      ...mapGetters('entity_nameSingle', ['entry', 'loading', 'lists'])
     },
     beforeDestroy() {
       this.resetState()
@@ -67,7 +67,7 @@
       }
     },
     methods: {
-      ...mapActions('EntidadSingle', [
+      ...mapActions('entity_nameSingle', [
         'fetchEditData',
         'updateData',
         'resetState',
@@ -83,7 +83,7 @@
       submitForm() {
         this.updateData()
           .then(() => {
-            this.$router.push({ name: 'entidad.index' })
+            this.$router.push({ name: 'name_camelcase.index' })
             this.$eventHub.$emit('update-success')
           })
           .catch(error => {

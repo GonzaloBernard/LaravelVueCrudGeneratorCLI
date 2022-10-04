@@ -10,7 +10,7 @@
                 </div>
                 <h4 class="card-title">
                   {{ $t('global.create') }}
-                  <strong>Crear Entidad</strong>
+                  <strong>Crear entity_name</strong>
                 </h4>
               </div>
               <div class="card-body">
@@ -51,7 +51,7 @@
       }
     },
     computed: {
-      ...mapGetters('EntidadSingle', ['entry', 'loading', 'lists'])
+      ...mapGetters('entity_nameSingle', ['entry', 'loading', 'lists'])
     },
     mounted() {
       this.fetchCreateData()
@@ -60,7 +60,7 @@
       this.resetState()
     },
     methods: {
-      ...mapActions('EntidadSingle', [
+      ...mapActions('entity_nameSingle', [
         'storeData',
         'resetState',
         'fetchCreateData'
@@ -69,7 +69,7 @@
       submitForm() {
         this.storeData()
           .then(() => {
-            this.$router.push({ name: 'entidad.index' })
+            this.$router.push({ name: 'name_camelcase.index' })
             this.$eventHub.$emit('create-success')
           })
           .catch(error => {

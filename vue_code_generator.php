@@ -180,7 +180,7 @@ mkdir(
     "store/cruds/${entity_name}",
     $recursive = true,
 );
-$filetext = readTemplate('single.txt',$prefix , $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('single.js',$prefix , $entity_name, $name_camelcase, $db_name);
 
 $single_attributes = "";
 
@@ -203,7 +203,7 @@ if (strlen($float_attributes[0]) > 1) {
 $filetext = str_replace("// SINGLE", $single_attributes, $filetext);
 createFile("${output_store}${entity_name}/single.js", $filetext);
 
-$filetext = readTemplate('index.txt',$prefix , $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('index.js',$prefix , $entity_name, $name_camelcase, $db_name);
 
 $index_attributes = "";
 

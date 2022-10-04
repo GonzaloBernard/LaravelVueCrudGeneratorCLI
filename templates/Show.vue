@@ -9,7 +9,7 @@
               </div>
               <h4 class="card-title">
                 {{ $t('global.view') }}
-                <strong>Entidad</strong>
+                <strong>entity_name</strong>
               </h4>
             </div>
             <div class="card-body">
@@ -56,7 +56,7 @@
       this.resetState()
     },
     computed: {
-      ...mapGetters('EntidadSingle', ['entry'])
+      ...mapGetters('entity_nameSingle', ['entry'])
     },
     watch: {
       '$route.params.id': {
@@ -68,7 +68,7 @@
       }
     },
     methods: {
-      ...mapActions('EntidadSingle', ['fetchShowData', 'resetState'])
+      ...mapActions('entity_nameSingle', ['fetchShowData', 'resetState'])
     }
   }
   </script>

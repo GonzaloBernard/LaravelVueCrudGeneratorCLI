@@ -2,22 +2,14 @@
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 
-//$env = 'production';
+/*# $env = 'production';*/
 $env = 'development';
 
 //$prefix = 'vendor/generate/'; // Inside vendor folder
 $prefix = ''; // Root folder
 
-/* $output_model_prefix = $output_controller_prefix = $output_store_request_prefix = 
-        $output_update_request_prefix = $output_resource_prefix = $output_migration_prefix = 'vendor/generate/dist/'; */
-$api_path = 'routes/api.php';
-$output_create = 'cruds/';
-$output_index = $output_single = 'store/cruds/';
-$output_controller_prefix = 'app/Http/Controllers/Api/V1/Admin/';
-$output_store_request_prefix = 'app/Http/Requests/';
-$output_update_request_prefix = 'app/Http/Requests/';
-$output_resource_prefix = 'app/Http/Resources/Admin/';
-$output_migration_prefix = 'database/migrations/';
+$output_vue = 'cruds/';
+$output_store = 'store/cruds/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -83,31 +75,102 @@ mkdir(
     "cruds/${entity_name}",
     $recursive = true,
 );
-$filetext = readTemplate('create.txt',$prefix , $entity_name, $name_camelcase, $db_name);
-echo "-$filetext-\n";
+$filetext = readTemplate('Create.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 
 $create_attributes = "";
 
-if(strlen($string_attributes[0]) > 1) {
+if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
         $create_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($integer_attributes[0]) > 1) {
+if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
         $create_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($float_attributes[0]) > 1) {
+if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
         $create_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
     }
 }
 
 $filetext = str_replace("// create", $create_attributes, $filetext);
-$create = fopen("${output_create}${entity_name}/Create.vue", "w");
-fwrite($create, $filetext);
-fclose( $create );
+createFile("${output_vue}${entity_name}/Create.vue", $filetext);
+
+// EDIT VUE
+$filetext = readTemplate('Edit.vue', $prefix, $entity_name, $name_camelcase, $db_name);
+
+$edit_attributes = "";
+
+if (strlen($string_attributes[0]) > 1) {
+    foreach ($string_attributes as $attribute) {
+        $edit_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($integer_attributes[0]) > 1) {
+    foreach ($integer_attributes as $attribute) {
+        $edit_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($float_attributes[0]) > 1) {
+    foreach ($float_attributes as $attribute) {
+        $edit_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+    }
+}
+
+$filetext = str_replace("// edit", $edit_attributes, $filetext);
+createFile("${output_vue}${entity_name}/Edit.vue", $filetext);
+
+//SHOW VUE
+
+$filetext = readTemplate('Show.vue', $prefix, $entity_name, $name_camelcase, $db_name);
+
+$show_attributes = "";
+
+if (strlen($string_attributes[0]) > 1) {
+    foreach ($string_attributes as $attribute) {
+        $show_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($integer_attributes[0]) > 1) {
+    foreach ($integer_attributes as $attribute) {
+        $show_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($float_attributes[0]) > 1) {
+    foreach ($float_attributes as $attribute) {
+        $show_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+    }
+}
+
+$filetext = str_replace("// show", $show_attributes, $filetext);
+createFile("${output_vue}${entity_name}/Show.vue", $filetext);
+
+// INDEX VUE
+
+$filetext = readTemplate('Index.vue', $prefix, $entity_name, $name_camelcase, $db_name);
+
+$index_attributes = "";
+
+if (strlen($string_attributes[0]) > 1) {
+    foreach ($string_attributes as $attribute) {
+        $index_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($integer_attributes[0]) > 1) {
+    foreach ($integer_attributes as $attribute) {
+        $index_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+    }
+}
+if (strlen($float_attributes[0]) > 1) {
+    foreach ($float_attributes as $attribute) {
+        $index_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+    }
+}
+
+$filetext = str_replace("// index", $index_attributes, $filetext);
+createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 
 
 // Add to vuex store
@@ -118,56 +181,50 @@ mkdir(
     $recursive = true,
 );
 $filetext = readTemplate('single.txt',$prefix , $entity_name, $name_camelcase, $db_name);
-//echo "-$filetext-\n";
 
 $single_attributes = "";
 
-if(strlen($string_attributes[0]) > 1) {
+if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
         $single_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($integer_attributes[0]) > 1) {
+if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
         $single_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($float_attributes[0]) > 1) {
+if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
         $single_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
     }
 }
 
 $filetext = str_replace("// SINGLE", $single_attributes, $filetext);
-$single = fopen("${output_single}${entity_name}/single.js", "w");
-fwrite($single, $filetext);
-fclose( $single );
+createFile("${output_store}${entity_name}/single.js", $filetext);
 
 $filetext = readTemplate('index.txt',$prefix , $entity_name, $name_camelcase, $db_name);
-//echo "-$filetext-\n";
 
 $index_attributes = "";
 
-if(strlen($string_attributes[0]) > 1) {
+if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
         $index_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($integer_attributes[0]) > 1) {
+if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
         $index_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
     }
 }
-if(strlen($float_attributes[0]) > 1) {
+if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
         $index_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
     }
 }
 
 $filetext = str_replace("// index", $index_attributes, $filetext);
-$index = fopen("${output_index}${entity_name}/index.js", "w");
-fwrite($index, $filetext);
-fclose( $index );
+createFile("${output_store}${entity_name}/index.js", $filetext);
 
 
 
@@ -180,23 +237,31 @@ echo "-------------------------------------------------\n";
 /////////////////////////////////////////////////////
 // FUNCTIONS
 /////////////////////////////////////////////////////
-function readTemplate($template, $prefix , $entity_name, $name_camelcase, $db_name){
+function readTemplate($template, $prefix, $entity_name, $name_camelcase, $db_name)
+{
     $filename = "${prefix}templates/${template}";
-    $file = fopen( $filename, "r" );
+    echo"-- DEBUG:: Reading $filename \n";
+    $file = fopen($filename, "r");
 
-    if( $file == false ) {
-        echo ( "Error in opening file" );
+    if ($file == false) {
+        echo "Error in opening file";
         exit();
     }
 
-    $filesize = filesize( $filename );
-    $filetext = fread( $file, $filesize );
-    fclose( $file );
+    $filesize = filesize($filename);
+    $filetext = fread($file, $filesize);
+    fclose($file);
 
     $filetext = str_replace("entity_name", $entity_name, $filetext);
     $filetext = str_replace("name_camelcase", $name_camelcase, $filetext);
     $filetext = str_replace("db_name", $db_name, $filetext);
     return $filetext;
 }
-
-?>
+function createFile($path, $filetext)
+{
+    echo"-- DEBUG:: Writing $path \n";
+    $index = fopen($path, "w");
+    fwrite($index, $filetext);
+    fclose($index);
+    return true;
+}

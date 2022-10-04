@@ -8,9 +8,9 @@ Examples:
 
     php .\vendor\generate\code_generator.php NuevaEntidad nueva_entidad slug,descripcion id,quantity amount
 
-User first_name,last_name years height
+User first_name,last_name age height
 
-    php .\vendor\generate\code_generator.php User user first_name,last_name years height
+    php .\vendor\generate\code_generator.php User user first_name,last_name age height
 
 
 User first_name,last_name height
@@ -30,7 +30,7 @@ Vue Time
 
 Examples:
     using Laravel php exe
-    
+
     ..\..\bin\php\php-7.4.19-Win32-vc15-x64\php.exe vue_code_generator.php Producto producto descripcion categoria_id precio
 
 by GonzaloBernard

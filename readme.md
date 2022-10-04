@@ -26,4 +26,10 @@ User height
 After that, run migrations!
 
 
+Vue Time
+
+Examples:
+    using Laravel php exe
+    ..\..\bin\php\php-7.4.19-Win32-vc15-x64\php.exe vue_code_generator.php Producto producto descripcion categoria_id precio
+
 by GonzaloBernard

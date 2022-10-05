@@ -1,3 +1,8 @@
+# first of all run
+    php code_generator.php HelloWorld hello-world
+
+    php vue_code_generator.php HelloWorld hello-world
+
 # Installation
 Copy the generate folder in vendor folder 
 

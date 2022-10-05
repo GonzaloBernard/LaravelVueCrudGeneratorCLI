@@ -19,4 +19,22 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
 	//Producto
 	Route::resource('producto', 'ProductoApiController');
+
+	//Producto
+	Route::resource('producto', 'ProductoApiController');
+
+	//HelloWorld
+	Route::resource('helloWorld', 'HelloWorldApiController');
+
+	//HelloWorld
+	Route::resource('helloWorld', 'HelloWorldApiController');
+
+	//HelloWorld
+	Route::resource('helloWorld', 'HelloWorldApiController');
+
+	//HelloWorld
+	Route::resource('helloWorld', 'HelloWorldApiController');
+
+	//HelloWorld
+	Route::resource('helloWorld', 'HelloWorldApiController');
 });

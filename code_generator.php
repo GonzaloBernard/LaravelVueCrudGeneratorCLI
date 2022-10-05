@@ -77,7 +77,7 @@ fwrite($file, $filetext);
 //////////////////
 $model = fopen("${output_model_prefix}${entity_name}.php", "w");
 
-$filename = "${prefix}templates/model.txt";
+$filename = "${prefix}templates/model.php";
 $file = fopen($filename, "r" );
 
 if( $file == false ) {
@@ -120,7 +120,7 @@ fclose( $model );
 //////////////////
 $controller = fopen("${output_controller_prefix}${entity_name}ApiController.php", "w");
 
-$filename = "${prefix}templates/controller.txt";
+$filename = "${prefix}templates/controller.php";
 $file = fopen( $filename, "r" );
 
 if( $file == false ) {
@@ -142,7 +142,7 @@ fclose( $controller );
 //////////////////
 $storeRequest = fopen("${output_store_request_prefix}Store${entity_name}Request.php", "w");
 
-$filename = "${prefix}templates/storeRequest.txt";
+$filename = "${prefix}templates/storeRequest.php";
 $file = fopen( $filename, "r" );
 
 if( $file == false ) {
@@ -182,7 +182,7 @@ fclose( $storeRequest );
 //////////////////
 $updateRequest = fopen("${output_update_request_prefix}Update${entity_name}Request.php", "w");
 
-$filename = "${prefix}templates/updateRequest.txt";
+$filename = "${prefix}templates/updateRequest.php";
 $file = fopen( $filename, "r" );
 
 if( $file == false ) {
@@ -222,7 +222,7 @@ fclose( $updateRequest );
 //////////////////
 $resource = fopen("${output_resource_prefix}${entity_name}Resource.php", "w");
 
-$filename = "${prefix}templates/resource.txt";
+$filename = "${prefix}templates/resource.php";
 $file = fopen( $filename, "r" );
 
 if( $file == false ) {
@@ -244,7 +244,7 @@ fclose( $resource );
 //////////////////
 $migration = fopen("${output_migration_prefix}${time}_create_${db_name}_table.php", "w");
 
-$filename = "${prefix}templates/migration.txt";
+$filename = "${prefix}templates/migration.php";
 $file = fopen( $filename, "r" );
 
 if( $file == false ) {

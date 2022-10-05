@@ -22,13 +22,10 @@
                     <div class="table">
                       <tbody>
                         <tr>
-                          <td class="text-primary">
-                            #
-                          </td>
-                          <td>
-                            {{ entry.id }}
-                          </td>
+                          <td class="text-primary">#</td>
+                          <td>{{ entry.id }}</td>
                         </tr>
+                        <!-- SHOW TABLE VUE -->
                       </tbody>
                     </div>
                   </div>

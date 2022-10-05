@@ -71,8 +71,7 @@
         'fetchEditData',
         'updateData',
         'resetState',
-        'setTitle',
-        'setPermissions'
+        // MAP ACTIONS
       ]),
       updateTitle(e) {
         this.setTitle(e.target.value)

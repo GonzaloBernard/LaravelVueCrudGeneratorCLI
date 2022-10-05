@@ -61,9 +61,10 @@
     },
     methods: {
       ...mapActions('entity_nameSingle', [
+        'fetchCreateData',
         'storeData',
         'resetState',
-        'fetchCreateData'
+        // MAP ACTIONS
       ]),
   
       submitForm() {

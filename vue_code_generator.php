@@ -147,52 +147,52 @@ createFile("${output_vue}${entity_name}/Edit.vue", $filetext);
 
 //SHOW VUE
 
-
 $show_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= "<tr>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td class='text-primary'>${attribute}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>{{ entry.${attribute} }}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t\t\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= "<tr>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td class='text-primary'>${attribute}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>{{ entry.${attribute} }}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t\t\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= "<tr>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td class='text-primary'>${attribute}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<td>{{ entry.${attribute} }}</td>\n\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t\t\t\t\t";
     }
 }
+$show_attributes .= "\n\t\t\t\t\t\t\t\t\t\t\t\t<!-- SHOW TABLE VUE -->";
 
 $filetext = readTemplate('templates/Show.vue', '', $entity_name, $name_camelcase, $db_name);
-$filetext = str_replace("// show", $show_attributes, $filetext);
+$filetext = str_replace("<!-- SHOW TABLE VUE -->", $show_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Show.vue", $filetext);
 
 // INDEX VUE
 
-
-$index_attributes = "";
+$index_vue_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $index_vue_attributes .= "{ text: '$attribute', value: '$attribute' }, \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $index_vue_attributes .= "{ text: '$attribute', value: '$attribute' }, \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
+        $index_vue_attributes .= "{ text: '$attribute', value: '$attribute' }, \n\t\t\t";
     }
 }
+$index_vue_attributes .= "// INDEX TABLE VUE";
 
 $filetext = readTemplate('templates/Index.vue', '', $entity_name, $name_camelcase, $db_name);
-$filetext = str_replace("// index", $index_attributes, $filetext);
+$filetext = str_replace("// INDEX TABLE VUE", $index_vue_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 
 

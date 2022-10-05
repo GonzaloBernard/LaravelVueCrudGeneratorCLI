@@ -8,7 +8,11 @@ Copy the generate folder in vendor folder
 
     php .\vendor\generate\code_generator.php NuevaEntidad nueva_entidad slug,descripcion id,quantity amount
 
-# Attrs: [String first_name,last_name] [Integer age] [Float height]
+Attrs: [
+    -String first_name
+    -String last_name
+    -Integer age
+    -Float height
 
     php .\vendor\generate\code_generator.php User user first_name,last_name age height
 

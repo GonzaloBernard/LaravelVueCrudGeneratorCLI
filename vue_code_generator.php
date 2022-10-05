@@ -75,7 +75,6 @@ mkdir(
     "cruds/${entity_name}",
     $recursive = true,
 );
-$filetext = readTemplate('Create.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 
 $create_attributes = "";
 
@@ -95,11 +94,11 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('Create.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// create", $create_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Create.vue", $filetext);
 
 // EDIT VUE
-$filetext = readTemplate('Edit.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 
 $edit_attributes = "";
 
@@ -119,12 +118,12 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('Edit.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// edit", $edit_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Edit.vue", $filetext);
 
 //SHOW VUE
 
-$filetext = readTemplate('Show.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 
 $show_attributes = "";
 
@@ -144,12 +143,12 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('Show.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// show", $show_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Show.vue", $filetext);
 
 // INDEX VUE
 
-$filetext = readTemplate('Index.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 
 $index_attributes = "";
 
@@ -169,6 +168,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('Index.vue', $prefix, $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// index", $index_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 
@@ -180,7 +180,6 @@ mkdir(
     "store/cruds/${entity_name}",
     $recursive = true,
 );
-$filetext = readTemplate('single.js',$prefix , $entity_name, $name_camelcase, $db_name);
 
 $single_attributes = "";
 
@@ -200,10 +199,10 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('single.js',$prefix , $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// SINGLE", $single_attributes, $filetext);
 createFile("${output_store}${entity_name}/single.js", $filetext);
 
-$filetext = readTemplate('index.js', $prefix ,$entity_name, $name_camelcase, $db_name);
 
 $index_attributes = "";
 
@@ -223,6 +222,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
+$filetext = readTemplate('index.js', $prefix ,$entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// index", $index_attributes, $filetext);
 createFile("${output_store}${entity_name}/index.js", $filetext);
 

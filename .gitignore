@@ -2,9 +2,9 @@
 /app/Http/Requests/*.php
 /app/Http/Resources/Admin/*.php
 /app/Models/*.php
-/cruds/*
-!/cruds/empty.txt
+/js/cruds/*
+!/js/cruds/empty.txt
 /database/migrations/*.php
 /routes/*.php
-/store/cruds/*
-!/store/cruds/empty.txt
+/js/store/cruds/*
+!/js/store/cruds/empty.txt

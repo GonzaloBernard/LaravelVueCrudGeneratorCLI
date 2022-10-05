@@ -208,17 +208,17 @@ $single_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $single_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $single_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $single_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $single_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $single_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $single_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 
@@ -231,17 +231,17 @@ $index_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $index_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '(' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $index_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '(' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $index_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '(' . "'$attribute'); \n\t\t\t";
     }
 }
 

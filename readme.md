@@ -13,8 +13,7 @@ Attrs:
 - last_name    String
 - age          Integer
 - height       Float
-
-
+#
     php .\vendor\generate\code_generator.php User user first_name,last_name age height
 
 

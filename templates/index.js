@@ -28,9 +28,8 @@ const set = key => (state, val) => {
           //commit('setTotal', response.data.total)
         })
         .catch(error => {
-          message = error.response.data.message || error.message
           console.log("Error fetchIndexData:")
-          console.log(message)
+          console.log(error.response.data.message || error.message)
         })
         .finally(() => {
           commit('setLoading', false)
@@ -43,9 +42,8 @@ const set = key => (state, val) => {
           dispatch('fetchIndexData')
         })
         .catch(error => {
-          message = error.response.data.message || error.message
           console.log("Error destroyData:")
-          console.log(message)
+          console.log(error.response.data.message || error.message)
         })
     },
   

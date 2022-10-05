@@ -8,7 +8,7 @@ Copy the generate folder in vendor folder
 
     php .\vendor\generate\code_generator.php NuevaEntidad nueva_entidad slug,descripcion id,quantity amount
 
-Attrs:
+# All types (String, Integer and Float)
 - first_name   String
 - last_name    String
 - age          Integer
@@ -17,14 +17,20 @@ Attrs:
     php .\vendor\generate\code_generator.php User user first_name,last_name age height
 
 
-# User first_name,last_name height
+# Only Strings
+- first_name   String
+- last_name    String
 
-    php .\vendor\generate\code_generator.php User user first_name,last_name a height
+#
+    php .\vendor\generate\code_generator.php User user first_name,last_name
 
 
-# User height
+# Only Floats
+- height   String
+- weight   String
 
-    php .\vendor\generate\code_generator.php User user a a height
+#
+    php .\vendor\generate\code_generator.php User user a a height,weight
 
 
 After that, run migrations!

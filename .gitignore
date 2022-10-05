@@ -1,7 +1,7 @@
-/app/Http/Controllers/Api/V1/Admin/*
-/app/Http/Requests/*
-/app/Http/Resources/*
-/app/Models/*
+/app/Http/Controllers/Api/V1/Admin/*.php
+/app/Http/Requests/*.php
+/app/Http/Resources/Admin/*.php
+/app/Models/*.php
 /database/migrations/*
 /store/cruds/*
 /cruds/*

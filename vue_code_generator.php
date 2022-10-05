@@ -17,15 +17,15 @@ $output_store = 'js/store/cruds/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-$divider = '-------------------------------------------------';
+$divider = "--------------------------------------------------------------------------------------------\n";
 $entity_name = $argv[1];
 $name_camelcase = $argv[1];
 $name_camelcase[0] = strtolower($argv[1]);
 $db_name = $argv[2];
 $time = date('Y_m_d_His');
-echo "$divider\n";
-echo "-- Adding entity: $entity_name \n";
-echo "$divider\n";
+echo "$divider";
+echo "-- Adding VUE files for entity: $entity_name \n";
+echo "$divider";
 
 // TODO: improve the setters of the attributes by type
 echo " STRING ATTRIBUTES \n";
@@ -46,7 +46,7 @@ $float_attributes = explode(',',$float_attributes);
 foreach ($float_attributes as $attribute) {
     echo "\t-" . $attribute ;
 }
-echo "\n$divider\n";
+echo "\n$divider";
 // TODO: improve the setters of the attributes by type
 
 
@@ -251,10 +251,15 @@ createFile("${output_store}${entity_name}/index.js", $filetext);
 
 
 
-echo "$divider\n";
-echo "-- Entity created !!!! \n";
+echo "$divider";
+echo "$divider";
+echo "-- VUE files created !!!! \n";
 echo "-- apparently \n";
-echo "$divider\n";
+echo "$divider";
+echo "$divider";
+echo "-- Developed by GonzaloBernard\n";
+echo "$divider";
+echo "$divider";
 
 
 /////////////////////////////////////////////////////

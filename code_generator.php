@@ -19,7 +19,7 @@ $output_resource_prefix = 'app/Http/Resources/Admin/';
 $output_migration_prefix = 'database/migrations/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-$divider = "-------------------------------------------------\n";
+$divider = "--------------------------------------------------------------------------------------------\n";
 
 $entity_name = $argv[1];
 $name_camelcase = $argv[1];
@@ -180,10 +180,15 @@ $filetext = str_replace("// DB_ATTRIBUTES", $migration_attributes, $filetext);
 
 createFile("${output_migration_prefix}${time}_create_${db_name}_table.php", $filetext);
 
-echo $divider;
+echo "$divider";
+echo "$divider";
 echo "-- Entity created !!!! \n";
 echo "-- apparently \n";
-echo $divider;
+echo "$divider";
+echo "$divider";
+echo "-- Developed by GonzaloBernard\n";
+echo "$divider";
+echo "$divider";
 
 
 function readTemplate($template, $prefix, $entity_name, $name_camelcase, $db_name)

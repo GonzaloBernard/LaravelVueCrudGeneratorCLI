@@ -39,8 +39,8 @@
         </div>
       </form>
     </div>
-  </template>
-  <script>
+</template>
+<script>
   import { mapGetters, mapActions } from 'vuex'
   
   export default {

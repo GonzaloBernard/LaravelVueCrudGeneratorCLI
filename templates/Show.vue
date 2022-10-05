@@ -39,9 +39,9 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   import { mapGetters, mapActions } from 'vuex'
   import DatatableList from '@components/Datatables/DatatableList'
   
@@ -71,5 +71,5 @@
       ...mapActions('entity_nameSingle', ['fetchShowData', 'resetState'])
     }
   }
-  </script>
+</script>
   

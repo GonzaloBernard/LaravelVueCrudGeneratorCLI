@@ -59,13 +59,20 @@ echo "\n$divider\n";
 // pages /layout /DashboardLayout.vue
 /////////////////
 
+$filetext = readTemplate($dashboard_vue, '', $entity_name, $name_camelcase, $db_name);
+$menu_item = "{\n\t\t\t\t\ttitle: '${entity_name}',\n\t\t\t\t\ticon: 'dashboard',\n\t\t\t\t\tpath: {name: '${name_camelcase}.index'},\n\t\t\t\t\t//gate: 'user',\n\t\t\t\t},\n\t\t\t\t// MENU ITEM";
+$filetext = str_replace("// MENU ITEM", $menu_item, $filetext);
+createFile($dashboard_vue, $filetext);
+
 // Add routes
 // routes /routes.js
 /////////////////
 $filetext = readTemplate($routes_js, '', $entity_name, $name_camelcase, $db_name);
-$route = "{\n\t\t\tpath: '${name_camelcase}Show',\n\t\t\t\tname: '${name_camelcase}Show',\n\t\t\t\tcomponent: () => import('@pages/${entity_name}.vue'),\n\t\t\t\tmeta: { title: 'Información del ${entity_name}' },\n\t\t\t},\n\t\t\t// NEW VUE ROUTE";
 
-$filetext = str_replace("// NEW VUE ROUTE", $route, $filetext);
+$index = "{\n\t\t\t\tpath: '${name_camelcase}/index',\n\t\t\t\tname: '${name_camelcase}.index',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Index.vue'),\n\t\t\t\tmeta: { title: 'Index ${entity_name}' },\n\t\t\t},\n\t\t\t";
+$create = "{\n\t\t\t\tpath: '${name_camelcase}/create',\n\t\t\t\tname: '${name_camelcase}.create',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Create.vue'),\n\t\t\t\tmeta: { title: 'Create ${entity_name}' },\n\t\t\t},\n\t\t\t// NEW VUE ROUTE";
+
+$filetext = str_replace("// NEW VUE ROUTE", $index. $create, $filetext);
 createFile($routes_js, $filetext);
 
 // Add module to vuex store

@@ -5,3 +5,4 @@
 /database/migrations/*
 /store/cruds/*
 /cruds/*
+!/cruds/empty.txt

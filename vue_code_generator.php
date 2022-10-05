@@ -13,15 +13,15 @@ $output_store = 'store/cruds/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
+$divider = '-------------------------------------------------';
 $entity_name = $argv[1];
 $name_camelcase = $argv[1];
 $name_camelcase[0] = strtolower($argv[1]);
 $db_name = $argv[2];
 $time = date('Y_m_d_His');
-echo "-------------------------------------------------\n";
+echo "$divider\n";
 echo "-- Adding entity: $entity_name \n";
-echo "-------------------------------------------------\n";
+echo "$divider\n";
 
 // TODO: improve the setters of the attributes by type
 echo " STRING ATTRIBUTES \n";
@@ -42,13 +42,13 @@ $float_attributes = explode(',',$float_attributes);
 foreach ($float_attributes as $attribute) {
     echo "\t-" . $attribute ;
 }
-echo "\n-------------------------------------------------\n";
+echo "\n$divider\n";
 // TODO: improve the setters of the attributes by type
 
 
 //////////////////////////////////////////////////////////////////////
 //                   Read and Edit files                            //
-// ---------------------------------------------------------------- //
+// $divider--------------- //
 //////////////////////////////////////////////////////////////////////
 
 // Add menu item
@@ -65,7 +65,7 @@ echo "\n-------------------------------------------------\n";
 
 //////////////////////////////////////////////////////////////////////
 //                      Create files                                //
-// ---------------------------------------------------------------- //
+// $divider--------------- //
 //////////////////////////////////////////////////////////////////////
 
 // Add views
@@ -81,17 +81,17 @@ $create_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $create_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $create_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $create_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $create_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $create_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $create_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 
@@ -105,17 +105,17 @@ $edit_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $edit_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $edit_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $edit_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $edit_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $edit_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $edit_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 
@@ -130,17 +130,17 @@ $show_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $show_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $show_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $show_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $show_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 
@@ -155,17 +155,17 @@ $index_attributes = "";
 
 if (strlen($string_attributes[0]) > 1) {
     foreach ($string_attributes as $attribute) {
-        $index_attributes .= '$table->string(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($integer_attributes[0]) > 1) {
     foreach ($integer_attributes as $attribute) {
-        $index_attributes .= '$table->integer(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 if (strlen($float_attributes[0]) > 1) {
     foreach ($float_attributes as $attribute) {
-        $index_attributes .= '$table->float(' . "'$attribute'); \n\t\t\t";
+        $index_attributes .= '' . "'$attribute'); \n\t\t\t";
     }
 }
 
@@ -228,10 +228,10 @@ createFile("${output_store}${entity_name}/index.js", $filetext);
 
 
 
-echo "-------------------------------------------------\n";
+echo "$divider\n";
 echo "-- Entity created !!!! \n";
 echo "-- apparently \n";
-echo "-------------------------------------------------\n";
+echo "$divider\n";
 
 
 /////////////////////////////////////////////////////

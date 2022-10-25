@@ -4,6 +4,7 @@
 /app/Models/*.php
 /database/migrations/*.php
 /routes/*.php
+/dist/*.php
 
 /js/cruds/*
 /js/store/*

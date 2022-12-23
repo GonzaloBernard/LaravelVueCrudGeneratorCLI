@@ -1,18 +1,19 @@
-/app/Http/Controllers/Api/V1/Admin/*.php
-/app/Http/Requests/*.php
-/app/Http/Resources/Admin/*.php
-/app/Models/*.php
-/database/migrations/*.php
-/routes/*.php
-/dist/*.php
+.env
+/dist/app/Http/Controllers/Api/V1/Admin/*.php
+/dist/app/Http/Requests/*.php
+/dist/app/Http/Resources/Admin/*.php
+/dist/app/Models/*.php
+/dist/database/migrations/*.php
+/dist/routes/*.php
+/dist/dist/*.php
 
-/js/cruds/*
-/js/store/*
-/js/pages/layout/*
-/js/routes/*
+/dist/js/cruds/*
+/dist/js/store/*
+/dist/js/pages/layout/*
+/dist/js/routes/*
 
-!/js/cruds/*example*
-!/js/store/*example*
-!/js/store/cruds/*example*
-!/js/pages/layout/*example*
-!/js/routes/*example*
+!/dist/js/cruds/*example*
+!/dist/js/store/*example*
+!/dist/js/store/cruds/*example*
+!/dist/js/pages/layout/*example*
+!/dist/js/routes/*example*

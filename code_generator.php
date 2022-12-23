@@ -1,22 +1,28 @@
 <?php
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
-
+require_once('vendor/autoload.php');
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+echo $_ENV['NAME'] . "\n";
+echo $_SERVER['NAME'] . "\n";
+//var_dump($dotenv);// getenv();
+die();
 //#$env = 'production';
 $env = 'development';
 
 //$prefix = 'vendor/generate/'; // Inside vendor folder
 $prefix = ''; // Root folder
 
-/*# $output_model_prefix = $output_controller_prefix = $output_store_request_prefix =
-  # $output_update_request_prefix = $output_resource_prefix = $output_migration_prefix = 'vendor/generate/dist/';*/
+$output_model_prefix = $output_controller_prefix = $output_store_request_prefix =
+$output_update_request_prefix = $output_resource_prefix = $output_migration_prefix = 'dist/';
 
-$output_model_prefix = 'app/Models/';
-$output_controller_prefix = 'app/Http/Controllers/Api/V1/Admin/';
-$output_store_request_prefix = 'app/Http/Requests/';
-$output_update_request_prefix = 'app/Http/Requests/';
-$output_resource_prefix = 'app/Http/Resources/Admin/';
-$output_migration_prefix = 'database/migrations/';
+//$output_model_prefix = 'app/Models/';
+//$output_controller_prefix = 'app/Http/Controllers/Api/V1/Admin/';
+//$output_store_request_prefix = 'app/Http/Requests/';
+//$output_update_request_prefix = 'app/Http/Requests/';
+//$output_resource_prefix = 'app/Http/Resources/Admin/';
+//$output_migration_prefix = 'database/migrations/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 $divider = "--------------------------------------------------------------------------------------------\n";

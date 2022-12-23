@@ -1,10 +1,14 @@
+# set up (develop)
+    php setup.php
+
 # first of all run
     php code_generator.php HelloWorld hello-world
 
     php vue_code_generator.php HelloWorld hello-world
 
+
 # Installation
-Copy the generate folder in vendor folder 
+Copy the generate folder in vendor folder
 
 # How to run it!
     php path/to/file/code_generator.php EntityClassName entity_database_name [string_attribute[,string_attribute...]] [integer_attribute[,integer_attribute...]] [float_attribute[,float_attribute...]]

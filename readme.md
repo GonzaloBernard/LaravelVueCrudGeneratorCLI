@@ -1,4 +1,5 @@
 # set up (develop)
+    cp .env.example .env
     php setup.php
 
 # first of all run

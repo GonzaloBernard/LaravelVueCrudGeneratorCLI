@@ -35,8 +35,8 @@ Copy the generate folder in vendor folder
 
 
 # Only Floats
-- height   String
-- weight   String
+- height   Float
+- weight   Float
 
 #
     php .\vendor\generate\code_generator.php User user a a height,weight

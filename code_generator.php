@@ -4,25 +4,31 @@
 require_once('vendor/autoload.php');
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-echo $_ENV['NAME'] . "\n";
-echo $_SERVER['NAME'] . "\n";
-//var_dump($dotenv);// getenv();
-die();
-//#$env = 'production';
-$env = 'development';
+$dotenv->required([
+    'prefix'
+]);
+$dotenv->required([
+    'NAME',
+    'output_model_prefix',
+    'output_controller_prefix',
+    'output_store_request_prefix',
+    'output_update_request_prefix',
+    'output_resource_prefix',
+    'output_migration_prefix'
+    ])->notEmpty();
 
+$env = $_ENV['ENV'];
+$output_model_prefix = $_ENV['output_model_prefix'];
+$output_controller_prefix = $_ENV['output_controller_prefix'];
+$output_store_request_prefix = $_ENV['output_store_request_prefix'];
+$output_update_request_prefix = $_ENV['output_update_request_prefix'];
+$output_resource_prefix = $_ENV['output_resource_prefix'];
+$output_migration_prefix = $_ENV['output_migration_prefix'];
+$prefix = $_ENV['prefix'];
+$api_route_prefix = $_ENV['api_route_prefix'];
+//@deprecated
 //$prefix = 'vendor/generate/'; // Inside vendor folder
-$prefix = ''; // Root folder
 
-$output_model_prefix = $output_controller_prefix = $output_store_request_prefix =
-$output_update_request_prefix = $output_resource_prefix = $output_migration_prefix = 'dist/';
-
-//$output_model_prefix = 'app/Models/';
-//$output_controller_prefix = 'app/Http/Controllers/Api/V1/Admin/';
-//$output_store_request_prefix = 'app/Http/Requests/';
-//$output_update_request_prefix = 'app/Http/Requests/';
-//$output_resource_prefix = 'app/Http/Resources/Admin/';
-//$output_migration_prefix = 'database/migrations/';
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 $divider = "--------------------------------------------------------------------------------------------\n";
@@ -60,7 +66,7 @@ echo "\n-------------------------------------------------\n";
 
 // ROUTE API
 /////////////////
-$filename = "routes/api.php";
+$filename = "{$api_route_prefix}routes/api.php";
 $file = fopen($filename, "a");
 
 if ($file == false) {
@@ -76,7 +82,7 @@ $api_resource = "\n\t//$entity_name\n\tRoute::resource('$name_camelcase', '${ent
 //#$api_resource = "";
 $filetext = str_replace("});", $api_resource, $filetext);
 
-createFile("routes/api.php", $filetext);
+createFile("{$api_route_prefix}routes/api.php", $filetext);
 
 // MODEL
 //////////////////

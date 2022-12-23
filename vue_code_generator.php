@@ -4,9 +4,7 @@
 require_once('vendor/autoload.php');
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-$dotenv->required([
-    'prefix'
-]);
+
 $dotenv->required([
     'NAME',
     'routes_js',
@@ -24,14 +22,11 @@ $dashboard_vue = $_ENV['dashboard_vue'];
 $output_vue = $_ENV['output_vue'];
 $output_store = $_ENV['output_store'];
 $output_routes_js = $_ENV['output_routes_js'];
-$prefix = $_ENV['prefix'];
+
 
 
 /*# $env = 'production';*/
 /* $env = 'development';
-
-//$prefix = 'vendor/generate/'; // Inside vendor folder
-$prefix = ''; // Root folder
 
 $routes_js = 'js/routes/routes.js';
 $store_js = 'js/store/store.js';
@@ -84,7 +79,7 @@ echo "\n$divider";
 // pages /layout /DashboardLayout.vue
 /////////////////
 
-$filetext = readTemplate($dashboard_vue, '', $entity_name, $name_camelcase, $db_name);
+$filetext = readRewritable($dashboard_vue, '', $entity_name, $name_camelcase, $db_name);
 $menu_item = "{\n\t\t\t\t\ttitle: '${entity_name}',\n\t\t\t\t\ticon: 'dashboard',\n\t\t\t\t\tpath: {name: '${name_camelcase}.index'},\n\t\t\t\t\t//gate: 'user',\n\t\t\t\t},\n\t\t\t\t// MENU ITEM";
 $filetext = str_replace("// MENU ITEM", $menu_item, $filetext);
 createFile($dashboard_vue, $filetext);
@@ -92,7 +87,7 @@ createFile($dashboard_vue, $filetext);
 // Add routes
 // routes /routes.js
 /////////////////
-$filetext = readTemplate($routes_js.'routes.js', '', $entity_name, $name_camelcase, $db_name);
+$filetext = readRewritable($routes_js.'routes.js', '', $entity_name, $name_camelcase, $db_name);
 
 $index = "{\n\t\t\t\tpath: '${name_camelcase}/index',\n\t\t\t\tname: '${name_camelcase}.index',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Index.vue'),\n\t\t\t\tmeta: { title: 'Index ${entity_name}' },\n\t\t\t},\n\t\t\t";
 $create = "{\n\t\t\t\tpath: '${name_camelcase}/create',\n\t\t\t\tname: '${name_camelcase}.create',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Create.vue'),\n\t\t\t\tmeta: { title: 'Create ${entity_name}' },\n\t\t\t},\n\t\t\t// NEW VUE ROUTE";
@@ -103,7 +98,7 @@ createFile($output_routes_js . 'routes.js', $filetext);
 // Add module to vuex store
 // store /store.js
 /////////////////
-$filetext = readTemplate($store_js, '', $entity_name, $name_camelcase, $db_name);
+$filetext = readRewritable($store_js, '', $entity_name, $name_camelcase, $db_name);
 $imports = "import ${entity_name}Index from './cruds/${entity_name}/index';\nimport ${entity_name}Single from './cruds/${entity_name}/single';\n// NEW STORE IMPORTS";
 $module = "${entity_name}Index,\n\t\t${entity_name}Single,\n\t\t// NEW STORE MODULE";
 
@@ -142,7 +137,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate('templates/Create.vue', '', $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('Create.vue', '', $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// create", $create_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Create.vue", $filetext);
 
@@ -166,7 +161,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate('templates/Edit.vue', '', $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('Edit.vue', '', $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// edit", $edit_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Edit.vue", $filetext);
 
@@ -191,7 +186,7 @@ if (strlen($float_attributes[0]) > 1) {
 }
 $show_attributes .= "\n\t\t\t\t\t\t\t\t\t\t\t\t<!-- SHOW TABLE VUE -->";
 
-$filetext = readTemplate('templates/Show.vue', '', $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('Show.vue', '', $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("<!-- SHOW TABLE VUE -->", $show_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Show.vue", $filetext);
 
@@ -216,7 +211,7 @@ if (strlen($float_attributes[0]) > 1) {
 }
 $index_vue_attributes .= "// INDEX TABLE VUE";
 
-$filetext = readTemplate('templates/Index.vue', '', $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('Index.vue', '', $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// INDEX TABLE VUE", $index_vue_attributes, $filetext);
 createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 
@@ -248,7 +243,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate('templates/single.js', '' , $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('single.js', '' , $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// SINGLE", $single_attributes, $filetext);
 createFile("${output_store}${entity_name}/single.js", $filetext);
 
@@ -271,7 +266,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate('templates/index.js', '' ,$entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate('index.js', '' ,$entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// index", $index_attributes, $filetext);
 createFile("${output_store}${entity_name}/index.js", $filetext);
 
@@ -291,9 +286,9 @@ echo "$divider";
 /////////////////////////////////////////////////////
 // FUNCTIONS
 /////////////////////////////////////////////////////
-function readTemplate($template, $prefix, $entity_name, $name_camelcase, $db_name)
+/* function readTemplate($template, $entity_name, $name_camelcase, $db_name)
 {
-    $filename = "${template}";
+    $filename = "templates/${template}";
     echo"-- DEBUG:: Reading $filename \n";
     $file = fopen($filename, "r");
 
@@ -310,7 +305,7 @@ function readTemplate($template, $prefix, $entity_name, $name_camelcase, $db_nam
     $filetext = str_replace("name_camelcase", $name_camelcase, $filetext);
     $filetext = str_replace("db_name", $db_name, $filetext);
     return $filetext;
-}
+} 
 function createFile($path, $filetext)
 {
     echo"-- DEBUG:: Writing $path \n";
@@ -319,3 +314,4 @@ function createFile($path, $filetext)
     fclose($index);
     return true;
 }
+*/

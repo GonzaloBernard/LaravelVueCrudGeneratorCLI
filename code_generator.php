@@ -5,9 +5,6 @@ require_once('vendor/autoload.php');
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 $dotenv->required([
-    'prefix'
-]);
-$dotenv->required([
     'NAME',
     'output_model_prefix',
     'output_controller_prefix',
@@ -24,10 +21,8 @@ $output_store_request_prefix = $_ENV['output_store_request_prefix'];
 $output_update_request_prefix = $_ENV['output_update_request_prefix'];
 $output_resource_prefix = $_ENV['output_resource_prefix'];
 $output_migration_prefix = $_ENV['output_migration_prefix'];
-$prefix = $_ENV['prefix'];
+
 $api_route_prefix = $_ENV['api_route_prefix'];
-//@deprecated
-//$prefix = 'vendor/generate/'; // Inside vendor folder
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -105,14 +100,14 @@ if (strlen($float_attributes[0]) > 1) {
 }
 
 
-$filetext = readTemplate("model.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("model.php",  $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// MODEL_ATTRIBUTES", $model_attributes, $filetext);
 createFile("${output_model_prefix}${entity_name}.php", $filetext);
 
 // CONTROLLER
 //////////////////
 
-$filetext = readTemplate("controller.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("controller.php",  $entity_name, $name_camelcase, $db_name);
 createFile("${output_controller_prefix}${entity_name}ApiController.php", $filetext);
 
 // STORE REQUEST
@@ -134,7 +129,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate("storeRequest.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("storeRequest.php",  $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// REQUEST_ATTRIBUTES", $store_attributes, $filetext);
 createFile("${output_store_request_prefix}Store${entity_name}Request.php", $filetext);
 
@@ -158,13 +153,13 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate("updateRequest.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("updateRequest.php",  $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// REQUEST_ATTRIBUTES", $update_attributes, $filetext);
 createFile("${output_update_request_prefix}Update${entity_name}Request.php", $filetext);
 
 // RESOURCE
 //////////////////
-$filetext = readTemplate("resource.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("resource.php",  $entity_name, $name_camelcase, $db_name);
 createFile("${output_resource_prefix}${entity_name}Resource.php", $filetext);
 
 // migration
@@ -187,7 +182,7 @@ if (strlen($float_attributes[0]) > 1) {
     }
 }
 
-$filetext = readTemplate("migration.php", $prefix, $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate("migration.php",  $entity_name, $name_camelcase, $db_name);
 $filetext = str_replace("// DB_ATTRIBUTES", $migration_attributes, $filetext);
 
 createFile("${output_migration_prefix}${time}_create_${db_name}_table.php", $filetext);
@@ -203,9 +198,30 @@ echo "$divider";
 echo "$divider";
 
 
-function readTemplate($template, $prefix, $entity_name, $name_camelcase, $db_name)
+function readTemplate($template, $entity_name, $name_camelcase, $db_name)
 {
-    $filename = "${prefix}templates/${template}";
+    $filename = "templates/${template}";
+    echo"-- DEBUG:: Reading $filename \n";
+    $file = fopen($filename, "r");
+
+    if ($file == false) {
+        echo "Error in opening file";
+        exit();
+    }
+
+    $filesize = filesize($filename);
+    $filetext = fread($file, $filesize);
+    fclose($file);
+
+    $filetext = str_replace("entity_name", $entity_name, $filetext);
+    $filetext = str_replace("name_camelcase", $name_camelcase, $filetext);
+    $filetext = str_replace("db_name", $db_name, $filetext);
+    return $filetext;
+}
+
+function readRewritable($template, $entity_name, $name_camelcase, $db_name)
+{
+    $filename = "${template}";
     echo"-- DEBUG:: Reading $filename \n";
     $file = fopen($filename, "r");
 

@@ -1,9 +1,32 @@
 <?php
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
 //////////////////////////////////////// CONFIG ////////////////////////////////////////
+require_once('vendor/autoload.php');
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$dotenv->required([
+    'prefix'
+]);
+$dotenv->required([
+    'NAME',
+    'routes_js',
+    'store_js',
+    'dashboard_vue',
+    'output_vue',
+    'output_store',
+    ])->notEmpty();
+
+$env = $_ENV['ENV'];
+$routes_js = $_ENV['routes_js'];
+$store_js = $_ENV['store_js'];
+$dashboard_vue = $_ENV['dashboard_vue'];
+$output_vue = $_ENV['output_vue'];
+$output_store = $_ENV['output_store'];
+$prefix = $_ENV['prefix'];
+
 
 /*# $env = 'production';*/
-$env = 'development';
+/* $env = 'development';
 
 //$prefix = 'vendor/generate/'; // Inside vendor folder
 $prefix = ''; // Root folder
@@ -13,7 +36,7 @@ $store_js = 'js/store/store.js';
 $dashboard_vue = 'js/pages/layout/DashboardLayout.vue';
 
 $output_vue = 'js/cruds/';
-$output_store = 'js/store/cruds/';
+$output_store = 'js/store/cruds/'; */
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ CONFIG \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

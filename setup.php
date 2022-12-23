@@ -66,4 +66,6 @@ mkdir($output_vue,  $mode = 0555, $recursive = true);
 mkdir($output_store,  $mode = 0555, $recursive = true);
 
 copy('setup/DashboardLayout.vue', "{$output_dashboard_vue}DashboardLayout.vue");
+copy('setup/routes.js', "{$output_routes_js}routes.js");
+copy('setup/store.js', "{$output_store_js}store.js");
 

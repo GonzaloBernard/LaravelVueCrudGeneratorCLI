@@ -14,6 +14,7 @@ $dotenv->required([
     'dashboard_vue',
     'output_vue',
     'output_store',
+    'output_routes_js'
     ])->notEmpty();
 
 $env = $_ENV['ENV'];
@@ -22,6 +23,7 @@ $store_js = $_ENV['store_js'];
 $dashboard_vue = $_ENV['dashboard_vue'];
 $output_vue = $_ENV['output_vue'];
 $output_store = $_ENV['output_store'];
+$output_routes_js = $_ENV['output_routes_js'];
 $prefix = $_ENV['prefix'];
 
 
@@ -90,13 +92,13 @@ createFile($dashboard_vue, $filetext);
 // Add routes
 // routes /routes.js
 /////////////////
-$filetext = readTemplate($routes_js, '', $entity_name, $name_camelcase, $db_name);
+$filetext = readTemplate($routes_js.'routes.js', '', $entity_name, $name_camelcase, $db_name);
 
 $index = "{\n\t\t\t\tpath: '${name_camelcase}/index',\n\t\t\t\tname: '${name_camelcase}.index',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Index.vue'),\n\t\t\t\tmeta: { title: 'Index ${entity_name}' },\n\t\t\t},\n\t\t\t";
 $create = "{\n\t\t\t\tpath: '${name_camelcase}/create',\n\t\t\t\tname: '${name_camelcase}.create',\n\t\t\t\tcomponent: () => import('@cruds/${entity_name}/Create.vue'),\n\t\t\t\tmeta: { title: 'Create ${entity_name}' },\n\t\t\t},\n\t\t\t// NEW VUE ROUTE";
 
 $filetext = str_replace("// NEW VUE ROUTE", $index. $create, $filetext);
-createFile($routes_js, $filetext);
+createFile($output_routes_js . 'routes.js', $filetext);
 
 // Add module to vuex store
 // store /store.js
@@ -224,6 +226,7 @@ createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 /////////////////
 mkdir(
     "${output_store}${entity_name}",
+    0555,
     $recursive = true,
 );
 

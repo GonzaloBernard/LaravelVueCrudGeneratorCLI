@@ -17,8 +17,8 @@ const routes = [
                 component: () => import("@pages/Dashboard.vue"),
                 meta: { title: "Panel Informativo" },
             }, 
+            // NEW VUE ROUTE
         ],
-        // NEW VUE ROUTE
         
     },
 ];

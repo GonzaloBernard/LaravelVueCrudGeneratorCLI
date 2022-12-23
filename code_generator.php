@@ -66,7 +66,7 @@ echo "\n-------------------------------------------------\n";
 
 // ROUTE API
 /////////////////
-$filename = "{$api_route_prefix}routes/api.php";
+$filename = "{$api_route_prefix}api.php";
 $file = fopen($filename, "a");
 
 if ($file == false) {
@@ -77,12 +77,12 @@ $file = fopen($filename, "r");
 $filesize = filesize($filename);
 $filetext = fread($file, $filesize);
 
-// Add the resources to routes/api.php
+// Add the resources to api.php
 $api_resource = "\n\t//$entity_name\n\tRoute::resource('$name_camelcase', '${entity_name}ApiController');\n});";
 //#$api_resource = "";
 $filetext = str_replace("});", $api_resource, $filetext);
 
-createFile("{$api_route_prefix}routes/api.php", $filetext);
+createFile("{$api_route_prefix}api.php", $filetext);
 
 // MODEL
 //////////////////

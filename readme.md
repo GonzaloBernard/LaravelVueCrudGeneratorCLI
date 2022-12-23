@@ -2,7 +2,7 @@
     cp .env.example .env
     php setup.php
 
-# first of all run
+# check setup
     php code_generator.php HelloWorld hello-world
 
     php vue_code_generator.php HelloWorld hello-world

@@ -1,3 +1,7 @@
+# CLI INTERFACE (new) 
+    php generate.php --setup
+    php generate.php
+
 # set up
     cp .env.example .env
     php setup.php

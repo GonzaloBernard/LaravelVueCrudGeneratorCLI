@@ -116,7 +116,7 @@ createFile($store_js, $filetext);
 /////////////////
 mkdir(
     "${output_vue}${entity_name}",
-    $recursive = true,
+    $recursive = true
 );
 
 $create_attributes = "";
@@ -222,7 +222,7 @@ createFile("${output_vue}${entity_name}/Index.vue", $filetext);
 mkdir(
     "${output_store}${entity_name}",
     0555,
-    $recursive = true,
+    $recursive = true
 );
 
 $single_attributes = "";

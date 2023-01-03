@@ -4,13 +4,13 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class entity_name extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
     use HasFactory;
 
     public $table = 'db_name';

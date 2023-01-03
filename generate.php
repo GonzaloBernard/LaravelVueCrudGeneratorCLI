@@ -30,6 +30,7 @@ $argv[5] = isset($options['f']) ? $options['f'] : readline('Float attributes (co
 $argc = 6;
 var_dump($argv);
 
+require('functions.php');
 $laravel = readline('Generate PHP Laravel files? (Y/n) : ');
 echo "-- $laravel \n";
 isset($laravel) && strtoupper($laravel) === 'Y' ? include('code_generator.php') : null;

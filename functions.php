@@ -21,7 +21,7 @@ function readRewritable($template, $entity_name, $name_camelcase, $db_name)
 }
 function readTemplate($template, $entity_name, $name_camelcase, $db_name)
 {
-    $filename = "{$_ENV['templates_folder']}templates/${template}";
+    $filename = "{$_ENV['templates_folder']}${template}";
     echo"-- DEBUG:: Reading $filename \n";
     $file = fopen($filename, "r");
 
